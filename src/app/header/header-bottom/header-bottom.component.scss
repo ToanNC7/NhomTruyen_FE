@@ -1,22 +1,274 @@
 #header-bottom{
     display: flex;
     justify-content: center;
-    padding-top: 5px;
-    padding-bottom: 10px;
+    padding-bottom: 5px;
+
     ul{
         padding-inline-start: 0;
         margin-block-start: 0;
         margin-block-end: 0;
         list-style: none;
         li{
+            position: relative;
             display: block;
             float: left;
+            padding: 5px 0;
             a{
-                text-decoration: none;
                 padding: 0 20px;
                 font-size: 13.5px;
                 word-spacing: 1.5px;
             }
+            &:hover ul{
+                display: block;
+            }
+            ul{
+                min-width: 150px;
+                display: none;
+                position: absolute;
+                top: calc(100%);
+                left: 0;
+                padding: 10px 0;
+                border-radius: 0 0 3px 3px;
+                li{
+                    display: block;
+                    clear: both;
+                    padding: 8px 10px;
+                }
+                background: #f1f1f1;
+            }
         }
     }
+}
+
+/* - - - - - - - - - - - - - - - - - - */
+#btn-danhmuc,#btn-theloai{
+    display: none;
+    height: 30px;
+    width: 30px;
+    position: fixed;
+    background-color: #eee;
+    top: 250px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+#btn-danhmuc:hover,#btn-theloai:hover{
+    opacity: 0.9;
+}
+#btn-danhmuc::before,#btn-theloai::before{
+    content: "\f03a";
+    font-weight: 900;
+    font-family: "FontAwesome";
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 2;
+    color: gray;
+  
+}
+#btn-danhmuc::after,#btn-theloai::after{
+    min-width: 120px;
+    padding: 0 10px;
+    text-align: center;
+    line-height: 2;
+    position: absolute;
+    background: #39c9f8;
+    color: #f1f1f1;
+    top: 0px;
+    font-size: 15px;
+    border-radius: 5px;
+    transition: 0.6s;
+    opacity: 0;
+  
+}
+#btn-danhmuc{
+    left: 0;
+    &::after{
+        content: "Danh mục";
+        left: calc(300%);
+    }
+    &:hover:after{
+        opacity: 1;
+        left: calc(100% + 5px);
+    }
+}
+#btn-theloai{
+    right: 0;
+    &::after{
+        content: "Thể loại";
+        right: calc(300%);
+    }
+    &:hover:after{
+        opacity: 1;
+        right: calc(100% + 5px);
+    }
+}
+
+/* - - - - - - - - - - - - - - - - - - */
+.container-danhmuc-show{
+    left: 0 !important;
+}
+.container-theloai-show{
+    right: 0 !important;
+}
+#container-danhmuc,#container-theloai{
+    position: fixed;
+    top: 0;
+    min-width: 300px;
+    height: 100vh;
+    background-color: rgb(0, 0, 0, 0.7);
+    z-index: 3;
+    transition: 0.75s;
+    .container-inner{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+
+        /* Btn Exit Container */
+        .container-exit{
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: 30px;
+            width: 30px;
+        
+
+            &::before{
+                content: "\f00d";
+                position: absolute;
+                font-weight: 900;
+                font-family: "FontAwesome";
+                top:50%;
+                left: 50%;
+                font-size: 18px;
+                color: #39c9f8;
+                transform: translate(-50%,-50%);
+                cursor: pointer;
+            }
+        }
+        
+
+        /* Title container */
+        h3{
+            position: relative;
+            margin-top: 50px;
+            margin-bottom: 40px;
+            color: #f1f1f1;
+            text-align: center;
+            word-spacing: 2px;
+
+            // &:before{
+            //     content: "\f03a";
+            //     font-weight: 900;
+            //     font-family: "FontAwesome";
+            //     position: absolute;
+            //     color: gray;
+            //     width: 45%;
+            //     height: 45%;
+            //     left: 15px;
+            //     top: 1px;
+            // }
+
+            &:after{
+                content: "";
+                position: absolute;
+                height: 5px;
+                width: 30px;
+                background-color: #fff;
+                border-radius: 3px;
+                top: calc(100% + 10px);
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+        }
+        /* List */
+        ul{
+            padding: 15px 20px;
+            list-style: none;
+            border-top: 0.5px solid #ececec;
+            li{
+                padding: 15px 0;
+                text-transform: uppercase;
+                a{
+                    color: #f1f1f1;
+                    font-size: 14px;
+                    font-weight: 550;
+                    word-spacing: 2px;
+                    &:hover{
+                        color: #39C9F8;
+                    }
+                }
+                &:not(:last-child){
+                    border-bottom: 0.5px solid #ececec;
+                }
+            }
+        }
+      
+    }
+}
+#container-danhmuc{
+    left: -100%;
+}
+#container-theloai{
+    right: -100%;
+}
+
+
+@media (max-width: 1025px){
+    #header-bottom{
+
+    }
+}
+@media (max-width: 850px){
+    #header-bottom{
+        
+    }
+}
+@media (max-width: 550px){
+    #header-bottom{
+        ul{
+            li:nth-child(2),li:nth-child(3){
+                display: none;
+            }
+        }
+    }
+    #btn-danhmuc,#btn-theloai{
+        display: block;
+    }
+}
+@media (max-width: 380px){
+    #header-bottom{
+        ul{
+            li{
+                a{
+                    padding: 0 10px;
+                }
+            }
+        }
+    }
+}
+@media (max-width: 321px)
+{
+    #btn-danhmuc,#btn-theloai{
+        position: absolute;
+        top: 26px;
+    }   
+    #btn-danhmuc{
+        left: 10px;
+        &:after{
+            display: none;
+        }
+    }
+    #btn-theloai{
+        right: 10px;
+        &:after{
+            display: none;
+        }
+    }
+  
 }

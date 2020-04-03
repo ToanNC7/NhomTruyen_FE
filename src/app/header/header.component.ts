@@ -6,10 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-
+  flatFixedHeader:boolean = false;
   constructor() { }
 
   ngOnInit(): void {
   }
-
+  recieveMessage(event)
+  {
+    this.flatFixedHeader = event;
+  }
 }

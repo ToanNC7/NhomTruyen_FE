@@ -1,5 +1,5 @@
 <div id="header">
   <nt-top-bar></nt-top-bar>
-  <nt-header-main></nt-header-main>
-  <nt-header-bottom></nt-header-bottom>
+  <nt-header-main (messageEventChild) = "recieveMessage($event)"></nt-header-main>
+  <nt-header-bottom [showBtnDanhMuc]="flatFixedHeader"></nt-header-bottom>
 </div>

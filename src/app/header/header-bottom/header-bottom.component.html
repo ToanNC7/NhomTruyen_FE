@@ -1,10 +1,76 @@
 <div id="header-bottom">
     <ul>
         <li><a href="">Giới thiệu</a></li>
-        <li><a href="">Danh mục</a></li>
-        <li><a href="">Thể loại</a></li>
+        <li><a href="">Danh mục
+            <ul>
+                <li>
+                    <a>Truyện full</a>
+                </li>
+                <li>
+                    <a>Truyện hot</a>
+                </li>
+                <li>
+                    <a>Truyện mới</a>
+                </li>
+            </ul>
+        </a></li>
+        <li><a href="">Thể loại
+            <ul>
+                <li>
+                    <a>Huyền huyễn</a>
+                </li>
+                <li>
+                    <a>Tiên hiệp</a>
+                </li>
+                <li>
+                    <a>Tu chân</a>
+                </li>
+                <li>
+                    <a>Đô thị</a>
+                </li>
+            </ul>
+        </a></li>
         <li><a href="">Tin tức</a></li>
         <li><a href="">Góp ý</a></li>
         <li><a href="">Diễn dàn</a></li>
     </ul>
+</div>
+<div id="btn-danhmuc" (click)="showContainer('danhmuc')" [style]="showBtnDanhMuc ? 'display:block': ''"></div>
+<div id="btn-theloai" (click)="showContainer('theloai')" [style]="showBtnDanhMuc ? 'display:block': ''"></div>
+<div id="container-danhmuc" [ngClass]="{'container-danhmuc-show': showDanhmuc}">
+    <div class="container-inner">
+        <span class="container-exit" (click)="hideContainer()"></span>
+        <H3>DANH MỤC</H3>
+        <ul>
+            <li>
+                <a href="">Truyện full</a>
+            </li>
+            <li>
+                <a href="">Truyện hot</a>
+            </li>
+            <li>
+                <a href="">Truyện mới</a>
+            </li>
+        </ul>
+    </div>
+</div>
+<div id="container-theloai" [ngClass]="{'container-theloai-show': showTheloai}">
+    <div class="container-inner">
+        <span class="container-exit" (click)="hideContainer()"></span>
+        <H3>THỂ LOẠI</H3>
+        <ul>
+            <li>
+                <a href="">Tu tiên</a>
+            </li>
+            <li>
+                <a href="">Huyền huyễn</a>
+            </li>
+            <li>
+                <a href="">Tu chân</a>
+            </li>
+            <li>
+                <a href="">Đô thị</a>
+            </li>
+        </ul>
+    </div>
 </div>
